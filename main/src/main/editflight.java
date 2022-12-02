@@ -54,7 +54,7 @@ public class editflight extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Microsoft JhengHei Light", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Edit Flight Details");
+        jLabel9.setText("Edit Flight Detail");
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setText("Flight ID:");

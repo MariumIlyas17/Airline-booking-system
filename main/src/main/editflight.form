@@ -179,7 +179,7 @@
               <Font name="Microsoft JhengHei Light" size="18" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Edit Flight Details"/>
+            <Property name="text" type="java.lang.String" value="Edit Flight Detail"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>

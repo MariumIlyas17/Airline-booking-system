@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 package main;
+import java.io.*;
+import java.util.Scanner; 
+
 
 /**
  *
@@ -13,8 +17,15 @@ public class NewJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public NewJFrame() throws FileNotFoundException {
         initComponents();
+//            Scanner sc = new Scanner(new File("C:\\Users\\user\\Documents\\GitHub Repos\\AirLine Booking System\\Airline-booking-system\\main\\src\\main\\data.csv"));  
+//sc.useDelimiter(",");   //sets the delimiter pattern  
+//while (sc.hasNext())  //returns a boolean value  
+//{  
+//System.out.println(sc.next());  //find and returns the next complete token from this scanner  
+//}   
+//sc.close();
     }
 
     /**

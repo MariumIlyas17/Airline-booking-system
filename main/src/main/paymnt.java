@@ -4,6 +4,10 @@
  */
 package main;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  *
  * @author user
@@ -13,8 +17,10 @@ public class paymnt extends javax.swing.JFrame {
     /**
      * Creates new form paymnt
      */
-    public paymnt() {
-        initComponents();
+    public paymnt() throws FileNotFoundException {
+        initComponents() ;
+        Scanner sc = new Scanner(new File("C:\\Users\\user\\Documents\\GitHub Repos\\AirLine Booking System\\Airline-booking-system\\main\\src\\main\\data.csv"));  
+         sc.useDelimiter(",");
     }
 
     /**

@@ -6,6 +6,8 @@ package main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,10 +18,9 @@ import java.util.logging.Logger;
  */
 public class editflight extends javax.swing.JFrame {
 
-    public editflight() throws FileNotFoundException {
+    public editflight() {
         initComponents();
-        Scanner sc = new Scanner(new File("C:\\Users\\user\\Documents\\GitHub Repos\\AirLine Booking System\\Airline-booking-system\\main\\src\\main\\data.csv"));  
-         sc.useDelimiter(",");
+
     }
 
     /**
@@ -244,14 +245,32 @@ public class editflight extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-           String source = source_name.getText() +"";
-           String flightId = flight_id.getText() +"";
-           String flightname = flight_name.getText() +"";
-           String destination = destination_name.getText() +"";
-           String date = date_name.getText() +"";
-           String arrivaltime = arrival_time.getText() +"";
-           String departuretime = departure_time.getText() +"";
-           String flightprice = flight_price.getText() +"";
+        int flightId = Integer.parseInt(flight_id.getText())  ;
+        String flightname = flight_name.getText() +"";
+        String source = source_name.getText() +"";
+        String destination = destination_name.getText() +"";
+        String date = date_name.getText() +"";
+        String arrivaltime = arrival_time.getText() +"";
+        String departuretime = departure_time.getText() +"";
+        String flightprice = flight_price.getText() +"";
+           
+           try {
+            Connection con =  new DbConnection().connect();   
+            Statement st = con.createStatement();
+            int i= st.executeUpdate("UPDATE FlightDetails SET Flight_name= '"+flightname+"',source= '"+source+"', Destination='"+destination+"', Date_time='"+date+"', Arrival_time='"+arrivaltime+"', Departure_time='"+departuretime+"', Flight_price='"+flightprice+"'  WHERE Flight_Id="+flightId+"");     
+             if (i > 0) {
+                System.out.println("flight details updated");
+                st.close();
+                setVisible(false);
+                
+            } else {
+            System.out.println("flight details not updated");
+            }
+            
+    }catch (Exception e){
+ 
+        e.printStackTrace();
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

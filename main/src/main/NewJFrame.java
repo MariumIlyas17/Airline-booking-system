@@ -6,13 +6,14 @@
 package main;
 import java.io.*;
 import java.util.Scanner; 
+import javax.swing.JFrame;
 
 
 /**
  *
  * @author user
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class NewJFrame extends JFrame {
 
     /**
      * Creates new form NewJFrame

@@ -5,13 +5,20 @@
 package main;
 
 import java.io.File;
-import java.util.Scanner;
 import javax.swing.*; 
 import java.awt.*; 
 import java.awt.event.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.*;
 
 /**
@@ -26,8 +33,9 @@ public class addflight extends javax.swing.JFrame {
      */
     public addflight() throws FileNotFoundException{
         initComponents();
-        Scanner sc = new Scanner(new File("C:\\Users\\user\\Documents\\GitHub Repos\\AirLine Booking System\\Airline-booking-system\\main\\src\\main\\data.csv"));  
-        sc.useDelimiter(",");
+//        Scanner sc = new Scanner(new File("C:\\Users\\user\\Documents\\GitHub Repos\\AirLine Booking System\\Airline-booking-system\\main\\src\\main\\data.csv"));  
+//        sc.useDelimiter(",");
+        
         
     }
 
@@ -278,20 +286,85 @@ public class addflight extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
             // TODO add your handling code here
 //         jab bhe button click hogaye function call hoga:
-           String source = source_name.getText() +"";
-           String flightId = flight_id.getText() +"";
-           String flightname = flight_name.getText() +"";
-           String destination = destination_name.getText() +"";
-           String date = date_name.getText() +"";
-           String arrivaltime = arrival_time.getText() +"";
-           String departuretime = departure_time.getText() +"";
-           String flightprice = flight_price.getText() +"";
+           
+           
+           
            
                 
     }//GEN-LAST:event_jButton1MouseClicked
-
+  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+     
+    
+        int flightId = Integer.parseInt(flight_id.getText())  ;
+        String flightname = flight_name.getText() +"";
+        String source = source_name.getText() +"";
+        String destination = destination_name.getText() +"";
+        String date = date_name.getText() +"";
+        String arrivaltime = arrival_time.getText() +"";
+        String departuretime = departure_time.getText() +"";
+        String flightprice = flight_price.getText() +"";
+            
+            
+        try {
+            Connection con =  new DbConnection().connect();   
+            Statement st = con.createStatement();
+            int i = st.executeUpdate("INSERT INTO FlightDetails " + "VALUES ("+flightId+", '"+flightname+"', '"+source+"', '"+destination+"', '"+arrivaltime+"', '"+departuretime+"', '"+date+"', '"+flightprice+"')");          
+             if (i > 0) {
+                System.out.println("ROW INSERTED");
+                st.close();
+                setVisible(false);
+                
+            } else {
+            System.out.println("ROW NOT INSERTED");
+            }
+            
+    }catch (Exception e){
+ 
+        e.printStackTrace();
+    }
+//            Scanner sc = new Scanner(new File("C:\\Users\\user\\Documents\\GitHub Repos\\AirLine Booking System\\Airline-booking-system\\main\\src\\main\\data.csv"));
+//            sc.useDelimiter(",");
+///            Iterator s = customerIterator();
+//            if (s.hasNext()==false){
+//                System.out.println("Empty");
+//            }
+   
+//                addflight flight  = (addflight) s.next();
+//                System.out.println(flight.toString()+"\n");
+//                String[] columnheading= {"FlightId", "Flightname","Source", "Destination", "date", "arrivaltime"
+//                                        , "departuretime" , "Flight price"};
+//                Font headerFont = sc.createFont();
+//                headerFont.bold(true);
+//                Row headerrow= sc.createRow(0);
+//                sc.append(Integer.toString(flightId));
+//                sc.append(",");
+//                sc.append(flightname);
+//                sc.append(",");
+//                sc.append(source);
+//                sc.append(",");
+//                sc.append(destination);
+//                sc.append(",");
+//                sc.append(Integer.toString(date));
+//                sc.append(",");
+//                sc.append(arrivaltime);
+//                sc.append(",");
+//                sc.append(departuretime);
+//                sc.append(",");
+//                sc.append(Integer.toString(flightprice));
+//                sc.append(",");                
+//                sc.append("\n");
+
+            
+//            sc.flush();
+//            sc.close();
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(addflight.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(addflight.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+           
+           
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void flight_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flight_idActionPerformed

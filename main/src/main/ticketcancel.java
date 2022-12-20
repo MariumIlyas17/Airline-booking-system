@@ -6,6 +6,8 @@ package main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.Scanner;
 
 /**
@@ -17,10 +19,9 @@ public class ticketcancel extends javax.swing.JFrame {
     /**
      * Creates new form ticketcancel
      */
-    public ticketcancel() throws FileNotFoundException {
+    public ticketcancel() {
         initComponents();
-        Scanner sc = new Scanner(new File("C:\\Users\\user\\Documents\\GitHub Repos\\AirLine Booking System\\Airline-booking-system\\main\\src\\main\\data.csv"));  
-         sc.useDelimiter(",");
+    
     }
 
     /**
@@ -156,7 +157,27 @@ public class ticketcancel extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
                 int flightId= Integer.parseInt(flight_Id.getText() +"");
-                int ticketno=Integer.parseInt(ticket_no.getText() +"");
+                String ticketno=ticket_no.getText() +"";
+                try {
+            Connection con =  new DbConnection().connect();   
+            Statement st = con.createStatement();
+            int i= st.executeUpdate("DELETE Reservation  WHERE Flight_ID="+flightId+" AND Ticket_id='"+ticketno+"'");
+//           
+             if (i > 0) {
+                System.out.println("Ticket booked deleted");
+                st.close();
+                setVisible(false);
+                
+            } else {
+            System.out.println("Ticket booked not deleted ");
+            }
+            
+    }catch (Exception e){
+ 
+        e.printStackTrace();
+    }
+        
+                
                 
 
 

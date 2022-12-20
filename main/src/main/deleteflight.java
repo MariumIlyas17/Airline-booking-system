@@ -6,6 +6,8 @@ package main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.Scanner;
 
 /**
@@ -14,10 +16,9 @@ import java.util.Scanner;
  */
 public class deleteflight extends javax.swing.JFrame {
 
-    public deleteflight()throws FileNotFoundException {
+    public deleteflight() {
         initComponents();
-        Scanner sc = new Scanner(new File("C:\\Users\\user\\Documents\\GitHub Repos\\AirLine Booking System\\Airline-booking-system\\main\\src\\main\\data.csv"));  
-         sc.useDelimiter(",");
+        
     }
 
     /**
@@ -135,7 +136,26 @@ public class deleteflight extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String flightId= flight_id.getText() +"";
+        int flightId= Integer.parseInt(flight_id.getText() +"") ;
+        try {
+            Connection con =  new DbConnection().connect();   
+            Statement st = con.createStatement();
+            int i= st.executeUpdate("DELETE FlightDetails  WHERE Flight_Id="+flightId+"");
+//           
+             if (i > 0) {
+                System.out.println("flight details deleted");
+                st.close();
+                setVisible(false);
+                
+            } else {
+            System.out.println("flight details not deleted ");
+            }
+            
+    }catch (Exception e){
+ 
+        e.printStackTrace();
+    }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void flight_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flight_idActionPerformed

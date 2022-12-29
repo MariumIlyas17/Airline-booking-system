@@ -140,9 +140,12 @@ public class NewJFrame extends JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        admin ad = new admin();
-        ad.setVisible(true);
+//        admin ad = new admin();
+//        ad.setVisible(true);
+
         this.setVisible(false);
+        login l= new login();
+        l.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

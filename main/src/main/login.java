@@ -116,6 +116,7 @@ public class login extends javax.swing.JFrame {
 
     private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
         String id= id_name.getText() + "";
         String pass= password_name.getText() +"";
         String filePath = "C:\\Users\\user\\Desktop\\login.txt";
@@ -136,6 +137,7 @@ public class login extends javax.swing.JFrame {
            System.out.println(sArray[1]);
            
            
+           
            if (sArray[0].equals(id) && sArray[1].equals(pass))
            {
                System.out.println("Match");
@@ -144,7 +146,7 @@ public class login extends javax.swing.JFrame {
            }
            else
            {
-               System.out.println("not matchs");
+               System.out.println("not matched");
            }
        }
     }//GEN-LAST:event_NextActionPerformed

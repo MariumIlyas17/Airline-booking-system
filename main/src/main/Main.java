@@ -13,16 +13,6 @@ public class Main {
 //    file File new file()
       NewJFrame jn = new NewJFrame();
       jn.setVisible(true);
-//      url = "jdbc:sqlserver://" +serverName + ":1433;DatabaseName=" + dbName + ";encrypt=true;trustServerCertificate=true;
-//        String  connectionURL = "jdbc:sqlserver://localhost:1433;DatabaseName=airline;UserName=DESKTOP-L63Q895\\user;password='';encrypt=true;trustServerCertificate=true";
-    
-//            Connection con;
-            
-//            con = new DbConnection().connect();
-//        String  connectionURL = "jdbc:sqlserver://localhost:1433;DatabaseName=airline;UserName=localhost;password=123456789;encrypt=true;trustServerCertificate=true";
-//    String dsn = "jdbc:sqlserver://localhost:1433;DatabaseName=airline;";
-//    String username = "localhost";
-//    String password = "123456789";
     try {
         System.out.print("Connecting to the server......");
       Connection con =  new DbConnection().connect();   
